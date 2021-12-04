@@ -338,8 +338,7 @@ class AsyncFileSystem(AbstractFileSystem):
     async def _cat(self, path, recursive=False, on_error="raise", **kwargs):
         paths = await self._expand_path(path, recursive=recursive)
         out = await asyncio.gather(
-            *[self._cat_file(path, **kwargs) for path in paths],
-            return_exceptions=True,
+            *[self._cat_file(path, **kwargs) for path in paths], return_exceptions=True,
         )
         if on_error == "raise":
             ex = next(filter(is_exception, out), False)

@@ -64,11 +64,7 @@ class MemoryFileSystem(AbstractFileSystem):
                     if ppath not in paths:
                         out = out or []
                         out.append(
-                            {
-                                "name": ppath,
-                                "size": 0,
-                                "type": "directory",
-                            }
+                            {"name": ppath, "size": 0, "type": "directory",}
                         )
                         paths.add(ppath)
         for p2 in self.pseudo_dirs:

@@ -172,8 +172,7 @@ def test_url_kwargs_chain(ftp_writable):
         f.write(data)
 
     with fsspec.open(
-        f"simplecache::ftp://{username}:{password}@{host}:{port}//afile",
-        "rb",
+        f"simplecache::ftp://{username}:{password}@{host}:{port}//afile", "rb",
     ) as f:
         assert f.read() == data
 

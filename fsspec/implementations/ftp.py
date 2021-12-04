@@ -136,9 +136,7 @@ class FTPFileSystem(AbstractFileSystem):
                 outfile.write(x)
 
             self.ftp.retrbinary(
-                "RETR %s" % rpath,
-                blocksize=self.blocksize,
-                callback=cb,
+                "RETR %s" % rpath, blocksize=self.blocksize, callback=cb,
             )
 
     def cat_file(self, path, start=None, end=None, **kwargs):
@@ -150,10 +148,7 @@ class FTPFileSystem(AbstractFileSystem):
             out.append(x)
 
         self.ftp.retrbinary(
-            "RETR %s" % path,
-            blocksize=self.blocksize,
-            rest=start,
-            callback=cb,
+            "RETR %s" % path, blocksize=self.blocksize, rest=start, callback=cb,
         )
         return b"".join(out)
 

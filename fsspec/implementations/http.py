@@ -648,14 +648,7 @@ class HTTPFile(AbstractBufferedFile):
     def __reduce__(self):
         return (
             reopen,
-            (
-                self.fs,
-                self.url,
-                self.mode,
-                self.blocksize,
-                self.cache.name,
-                self.size,
-            ),
+            (self.fs, self.url, self.mode, self.blocksize, self.cache.name, self.size,),
         )
 
 

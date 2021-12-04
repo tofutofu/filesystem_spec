@@ -181,10 +181,7 @@ def test_glob(test_path, expected):
             ],
         ),
         (("misc/foo.txt", "misc/*.txt"), ["misc/foo.txt"]),
-        (
-            ("",),
-            DummyTestFS.get_test_paths() + [DummyTestFS.root_marker],
-        ),
+        (("",), DummyTestFS.get_test_paths() + [DummyTestFS.root_marker],),
     ],
     # ids=["all_second_level", "single_file"],
 )
@@ -551,12 +548,7 @@ def test_dummy_callbacks_files_branched(tmpdir):
 
         base_keys = zip(make_path_posix(lpaths), make_path_posix(rpaths))
         assert set(callback.events.keys()) == {("top-level",), *base_keys}
-        assert (
-            callback.events[
-                "top-level",
-            ]
-            == imitate_transfer(10, 10, file=False)
-        )
+        assert callback.events["top-level",] == imitate_transfer(10, 10, file=False)
 
         for key in base_keys:
             assert callback.events[key] == imitate_transfer(50, 5)
